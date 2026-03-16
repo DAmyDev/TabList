@@ -16,14 +16,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v5
 
-      - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v3
-
       - name: Setup Java
         uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 17
+          cache: gradle
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Make gradlew executable
         run: chmod +x gradlew
